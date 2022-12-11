@@ -1,0 +1,27 @@
+### register
+GET http://localhost:8080/nic/update?hostname=d1.dyn.jkl.mn,d2.dyn.jkl.mn&token=PASSWORD&myip=127.0.0.2,127.0.0.3
+
+### update with basic auth, but only one domain and ip
+GET http://localhost:8080/nic/update?hostname=d1.dyn.jkl.mn&myip=127.0.0.4
+Authorization: Basic nologin PASSWORD
+
+### no pass
+GET http://localhost:8080/nic/update?hostname=d1.dyn.jkl.mn,d2.dyn.jkl.mn&myip=127.0.0.5
+
+### bad pass
+GET http://localhost:8080/nic/update?hostname=d1.dyn.jkl.mn,d2.dyn.jkl.mn&token=bad&myip=127.0.0.6
+
+
+### jkl register
+GET http://dyn.jkl.mn:8080/nic/update?hostname=d1.dyn.jkl.mn,d2.dyn.jkl.mn&token=PASSWORD&myip=127.0.0.2,127.0.0.3
+
+### jkl update with basic auth, but only one domain and ip
+GET http://dyn.jkl.mn:8080/nic/update?hostname=d1.dyn.jkl.mn&myip=127.0.0.4
+Authorization: Basic nologin PASSWORD
+
+### jkl no pass
+GET http://dyn.jkl.mn:8080/nic/update?hostname=d1.dyn.jkl.mn,d2.dyn.jkl.mn&myip=127.0.0.5
+
+### jkl bad pass
+GET http://dyn.jkl.mn:8080/nic/update?hostname=d1.dyn.jkl.mn,d2.dyn.jkl.mn&token=bad&myip=127.0.0.6
+
