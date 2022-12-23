@@ -1,5 +1,7 @@
 # go-ddnsd
-Dynamic DNS server with DynDNS API support and automatic registration
+Dynamic DNS server with DynDNS API support and automatic registration.
+This is PoC project not intended to be used in production yet.
+See https://github.com/yurt-page/docs/blob/main/dns.md
 
 ## Run the ddnsd locally
 To start locally for debugging you need to specify ports and IPs like this:
