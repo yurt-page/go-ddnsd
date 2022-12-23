@@ -20,12 +20,22 @@ var mapRecords = make(map[string]Records)
 var mapRecordsLock = sync.RWMutex{}
 
 func startDnsServer() {
-	dns.HandleFunc(selfDomain, handleDnsRequest)
-	srv := &dns.Server{Addr: listenAddrDns, Net: "udp"}
-	err := srv.ListenAndServe()
-	if err != nil {
-		log.Fatalf("DNS serv failed: %s\n", err.Error())
-	}
+	go func() {
+		dns.HandleFunc(selfDomain, handleDnsRequest)
+		srv := &dns.Server{Addr: listenAddrDns, Net: "udp"}
+		err := srv.ListenAndServe()
+		if err != nil {
+			log.Fatalf("DNS serv failed: %s\n", err.Error())
+		}
+	}()
+	go func() {
+		dns.HandleFunc(selfDomain, handleDnsRequest)
+		srv := &dns.Server{Addr: listenAddrDns, Net: "tcp"}
+		err := srv.ListenAndServe()
+		if err != nil {
+			log.Fatalf("DNS serv failed: %s\n", err.Error())
+		}
+	}()
 }
 
 func handleDnsRequest(w dns.ResponseWriter, r *dns.Msg) {

@@ -39,7 +39,7 @@ func main() {
 	}
 
 	loadDnsRecords()
-	go startDnsServer()
+	startDnsServer()
 	go startApiServer()
 
 	sig := make(chan os.Signal)
